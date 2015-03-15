@@ -1,0 +1,20 @@
+<div class="column large-12">
+  <h2>Pages</h2>
+  <ul>
+  {{#withSort pages 'data.title'}}
+    {{#unless this.data.dontshow}}
+    <li><a href="{{this.relativeLink}}"> {{this.data.title}}</a></li>
+    {{/unless}}
+  {{/withSort}}
+  </ul>
+</div>
+
+<div class="column large-12">
+  <h2>Style-guide</h2>
+  <ul>
+    <li><a href="/style-guide/">Style Guide</a></li>
+    <li><a href="/style-guide/components.html">Components</a></li>
+    <li><a href="/style-guide/forms.html">Forms</a></li>
+    <li><a href="/style-guide/development.html">Development</a></li>
+  </ul>
+</div>

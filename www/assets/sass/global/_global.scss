@@ -1,0 +1,50 @@
+/* Global */
+
+// Set box-sizing globally to handle padding and border widths
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+
+// Display - vertical align middle
+// ------------------------------------------------------ Display
+.valign {
+  display: table;
+  height: 100%;
+  width: 100%;
+
+  .valign-inner {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+  }
+}
+
+/* The ghost, nudged to maintain perfect centering */
+.vert-align:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+}
+
+/* The element to be centered, can
+   also be of any width and height */
+.vert-align-center  {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+// Fix background-size for ie8
+// ------------------------------------------------------ Fix background-size for ie8
+.lt-ie9 .background-size-support {
+  behavior: url(/assets/js/libs/backgroundsize.min.htc);
+  -ms-behavior: url(/assets/js/libs/backgroundsize.min.htc);
+}
+
+
+.main{
+  margin-top: 70px;
+}

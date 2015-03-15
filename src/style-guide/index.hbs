@@ -1,0 +1,302 @@
+---
+title: Style Guide
+heading: 'Style Guide'
+layout: style-guide.hbs
+docs: true
+slug: index
+order: 1
+side_nav:
+  - Grids
+  - Layout
+  - Colors
+  - Typography
+---
+
+<h1>{{ heading }}</h1>
+<p>Welcome to the Style Guide.</p>
+
+<div id="grids" class="docs-section">
+  <h2 class="docs-section-header">Grids</h2>
+  <div class="grid-examples">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="grid-examples--item">Item</div>
+      </div>
+      <div class="col-sm-4">
+        <div class="grid-examples--item">Item</div>
+      </div>
+      <div class="col-sm-4">
+        <div class="grid-examples--item">Item</div>
+      </div>
+    </div>
+  </div>
+  <div class="code">
+  {{#markdown}}
+  ```html
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">...</div>
+      <div class="col-sm-4">...</div>
+      <div class="col-sm-4">...</div>
+    </div>
+  </div>
+  ```
+  {{/markdown}}
+  </div>
+</div><!-- END docs-section -->
+
+<div id="layout" class="docs-section">
+  <h2 class="docs-section-header">Layout</h2>
+  <p>This layout is useful for when you always need a column which is static in width without losing the fluidity of the rest of the row. Just give the column a static <code>width</code> and <code>float:left</code> and add <code>overflow:hidden</code> to the column you want to remain fluid. Finally <code>clear</code> the wrapper <code>div</code> to fix the floats. The <code>clearfix</code> SASS mixin is a good choice.</p>
+
+  <p><strong>Important:</strong> The static column must always be first in the html order regardless of whether its on the left or right visually.</p>
+
+  <div class="docs-examples">
+    <div class="clearfix" style="margin-bottom:1em;">
+      <div style="width:200px; background-color:#333; padding:2em 1em; color:white; float:left;">
+        Static 200px width column
+      </div>
+      <div style="overflow:hidden; background-color:#999; padding:2em 1em; color:white;">
+        Fluid Column
+      </div>
+    </div>
+
+    <div class="clearfix" style="margin-bottom:1em;">
+      <div style="width:200px; background-color:#333; padding:2em 1em; color:white; float:right;">
+        Static 200px width column
+      </div>
+      <div style="overflow:hidden; background-color:#999; padding:2em 1em; color:white;">
+        Fluid Column
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <div style="width:175px; background-color:#333; padding:2em 1em; color:white; float:left;">
+        Static 175px
+      </div>
+      <div class="clearfix" style="overflow:hidden; background-color:#999; padding:0em; color:white;">
+        <div style="width:120px; background-color:#bbb; padding:2em 1em; color:#333; float:right;">
+          Static 120px
+        </div>
+        <div style="overflow:hidden; background-color:#666; padding:2em 1em; color:white;">
+          Fluid Column
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>HTML</h3>
+  <div class="code">
+  {{#markdown}}
+  ```html
+  <div class="container-static-fluid">
+    <div class="static-col-left">
+      ...
+    </div>
+    <div class="fluid-col">
+      ...
+    </div>
+  </div>
+
+  <div class="container-static-fluid">
+    <div class="static-col-right">
+      ...
+    </div>
+    <div class="fluid-col">
+      ...
+    </div>
+  </div>
+  ```
+  {{/markdown}}
+  </div>
+
+  <h3>CSS</h3>
+  <div class="code">
+  {{#markdown}}
+  ```css
+  .container-static-fluid{
+    @include clearfix;
+  }
+  .static-col-left{
+    width:200px;
+    float:left;
+  }
+  .static-col-right{
+    width:200px;
+    float:right;
+  }
+  .fluid-col{
+    overflow:hidden;
+  }
+  ```
+  {{/markdown}}
+  </div>
+</div><!-- END docs-section -->
+
+<div id="colors" class="docs-section">
+  <h2 class="docs-section-header">Colors</h2>
+
+  <div class="docs-examples">
+    <h3>Greys</h3>
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="color-swatch" style="background: #000000;">
+        </div>
+        <div class="color-swatch-desc">
+          black <br><strong>#000000</strong>
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="color-swatch" style="background: #444444;">
+        </div>
+        <div class="color-swatch-desc">
+          grey-dark <br><strong>#444444</strong>
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="color-swatch" style="background: #8a8a8a;">
+        </div>
+        <div class="color-swatch-desc">
+          grey-normal <br><strong>#8a8a8a</strong>
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="color-swatch" style="background: #b3b3b3;">
+        </div>
+        <div class="color-swatch-desc">
+          grey-medium <br><strong>#b3b3b3</strong>
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="color-swatch" style="background: #cecece;">
+        </div>
+        <div class="color-swatch-desc">
+          border-color <br><strong>#cecece</strong>
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="color-swatch" style="background: #d8d7d7;">
+        </div>
+        <div class="color-swatch-desc">
+          grey-light <br><strong>#d8d7d7</strong>
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="color-swatch" style="background: #ededed;">
+        </div>
+        <div class="color-swatch-desc">
+          grey-lightest <br><strong>#ededed</strong>
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="color-swatch" style="background: #f9f9f9;">
+        </div>
+        <div class="color-swatch-desc">
+          grey-light-bg <br><strong>#f9f9f9</strong>
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="color-swatch" style="background: #ffffff; border:1px solid #ededed;">
+        </div>
+        <div class="color-swatch-desc">
+          white <br><strong>#ffffff</strong>
+        </div>
+      </div>
+    </div>
+    <h3>Colors</h3>
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="color-swatch" style="background: #149691;">
+        </div>
+        <div class="color-swatch-desc">
+          blue-normal <br><strong>#149691</strong>
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="color-swatch" style="background: #5cc151;">
+        </div>
+        <div class="color-swatch-desc">
+          green-normal <br><strong>#5cc151</strong>
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="color-swatch" style="background: #e1c219;">
+        </div>
+        <div class="color-swatch-desc">
+          gold-normal <br><strong>#e1c219</strong>
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="color-swatch" style="background: #f2650f;">
+        </div>
+        <div class="color-swatch-desc">
+          orange-normal <br><strong>#f2650f</strong>
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="color-swatch" style="background: #c31619;">
+        </div>
+        <div class="color-swatch-desc">
+          red-normal <br><strong>#c31619</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- END docs-section -->
+
+<div id="typography" class="docs-section">
+  <h2 class="docs-section-header">Typography</h2>
+
+  <h3>Global Font Family</h3>
+
+  <div class="docs-examples typography-examples">
+    <h1>Primary Header</h1>
+    <h2>Secondary Header</h2>
+    <h3>Tertiary Header</h3>
+    <h4>Level Four Header</h4>
+    <h5>Level Five Header</h5>
+    <h6>Level Six Header</h6>
+  </div>
+  <div class="code">
+  {{#markdown}}
+  ```html
+  <h1>Primary Header</h1>
+  <h2>Secondary Header</h2>
+  <h3>Tertiary Header</h3>
+  ```
+  {{/markdown}}
+  </div>
+
+  <h3>Body Text</h3>
+  <ul>
+    <li>Font Size: 16pt</li>
+  </ul>
+  <div class="docs-examples">
+    <p>Body text, consectetur adipiscing elit. Quisque commodo Hyperlink, quis lobortis urna tempor eget. Phasellus ultricies at orci sit amet tempor. Morbi pharetra erat viverra lacus condimentum lacinia.</p>
+    <p>Sed accumsan tellus ac purus varius, a pharetra metus efficitur. Curabitur imperdiet ex ut est vestibulum sollicitudin. Duis ac rhoncus arcu. Quisque eget sem finibus, molestie lacus a, tincidunt massa. Vestibulum volutpat quam at purus convallis, vel posuere tortor sodales. Phasellus gravida tempus malesuada.</p>
+  </div>
+  <div class="code">
+  {{#markdown}}
+  ```html
+  <p>Body text, consectetur adipiscing elit. Quisque commodo Hyperlink, quis lobortis urna tempor eget.
+    Phasellus ultricies at orci sit amet tempor. Morbi pharetra erat viverra lacus condimentum lacinia.</p>
+  <p>Sed accumsan tellus ac purus varius, a pharetra metus efficitur. Curabitur imperdiet ex ut est
+    vestibulum sollicitudin. Duis ac rhoncus arcu. Quisque eget sem finibus, molestie lacus a,
+    tincidunt massa. Vestibulum volutpat quam at purus convallis, vel posuere tortor sodales.
+    Phasellus gravida tempus malesuada.</p>
+  ```
+  {{/markdown}}
+  </div>
+
+  <h3>Hyperlinks</h3>
+  <div class="docs-examples">
+    <a href="">Hyperlink</a>
+  </div>
+  <div class="code">
+  {{#markdown}}
+  ```html
+  <a href="">Hyperlink</a>
+  ```
+  {{/markdown}}
+  </div>
+</div><!-- END docs-section -->

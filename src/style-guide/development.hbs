@@ -1,0 +1,133 @@
+---
+title: Development
+heading: 'Development'
+layout: style-guide.hbs
+docs: true
+slug: development
+order: 10
+side_nav:
+  - HTML
+  - CSS
+  - Javascript
+  - Images
+  - File Naming
+---
+
+<h1>{{ heading }}</h1>
+<p>Welcome to Development Style Guide.</p>
+
+<div id="html" class="docs-section">
+  <h2 class="docs-section-header">HTML</h2>
+
+  <p>HTML should be written as clear and semantically as possible. Keep from nesting <code>divs</code> too deeply.</p>
+  <p>Write html components as self contained modules for easy re-use and flexability.</p>
+  <div class="code">
+  {{#markdown}}
+  ```html
+  <div class="block block--modifier">
+    <div class="block__element">
+      <p>...</p>
+    </div>
+  </div>
+  ```
+  {{/markdown}}
+  </div>
+  {{!-- <table class="docs-table">
+    <thead>
+      <tr>
+        <th>Heading</th>
+        <th>Heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Content Here</td>
+        <td>Content Here</td>
+      </tr>
+    </tbody>
+  </table> --}}
+</div> <!-- end docs-section -->
+
+<div id="css" class="docs-section">
+  <h2 class="docs-section-header">CSS</h2>
+  <h3>BEM (Block Element Modifier)</h3>
+  <p>BEM is a naming convention for your CSS classes to give them more meaning to other developers. More Information can be found <a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/" target="_blank">here</a>.</p>
+  <p>The naming convention follows this pattern:</p>
+  <div class="code">
+  {{#markdown}}
+  ```css
+  .block {}
+  .block__element {}
+  .block--modifier {}
+  ```
+  {{/markdown}}
+  </div>
+
+  <h3>SASS</h3>
+  <p>SASS if used as a CSS pre-processor on bethesda. SASS adds functionality to basic css writting, making repetitive tasks quicker.</p>
+  <h4>SASS Variables</h4>
+  <p>SASS variables allow for customization of the site elements.</p>
+  <div class="code">
+  {{#markdown}}
+  ```sass
+  // widths
+  $max-width: 1170px;
+  ```
+  {{/markdown}}
+  </div>
+</div> <!-- end docs-section -->
+
+<div id="javascript" class="docs-section">
+  <h2 class="docs-section-header">Javascript</h2>
+
+  <p>All javascript components are wrapped in a require.js module definition.</p>
+
+  <div class="code">
+  {{#markdown}}
+  ```js
+  define(['jquery'], function($) {
+
+    // Code Here
+
+  });
+  ```
+  {{/markdown}}
+  </div>
+</div> <!-- end docs-section -->
+
+
+<div id="images" class="docs-section">
+  <h2 class="docs-section-header">Images</h2>
+  <p>Using picture element for responsive images. Using <a href="http://scottjehl.github.io/picturefill/" target="_blank">picturefill</a> for unsupported browsers</p>
+
+  <div class="docs-examples">
+    <picture>
+      <!--[if IE 9]><video style="display: none;"><![endif]-->
+      <source srcset="http://placehold.it/640x320" media="(min-width: 768px)" />
+      <source srcset="http://placehold.it/320x240" media="(min-width: 480px)" />
+      <!--[if IE 9]></video><![endif]-->
+      <img src="http://placehold.it/640x320" alt="Alt Text" />
+    </picture>
+  </div>
+  <div class="code">
+  {{#markdown}}
+  ```html
+  <picture>
+    <!--[if IE 9]><video style="display: none;"><![endif]-->
+    <source srcset="http://placehold.it/640x320" media="(min-width: 768px)" />
+    <source srcset="http://placehold.it/640x320" media="(min-width: 480px)" />
+    <!--[if IE 9]></video><![endif]-->
+    <img src="http://placehold.it/640x320" alt="Alt Text" />
+  </picture>
+
+  ```
+  {{/markdown}}
+  </div>
+</div><!-- END docs-section -->
+
+<div id="file-naming" class="docs-section">
+  <h2 class="docs-section-header">File Naming</h2>
+
+  <p>File names should follow the <code>lowercase-hyphenated.ext</code> format.</p>
+</div> <!-- end docs-section -->
+

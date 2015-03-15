@@ -1,0 +1,313 @@
+/* Variables */
+/* Mixins */
+/*
+A slightly more automated approach to BEM modifier classes:
+using '&' parent selector interpolation, modifiers extend their bases,
+so that HTML markup requires only the modifier class not the base *and* modifier
+*/
+/*
+// Example :
+
+.button {
+  padding: 0.5em;
+  border-radius: 0.25em;
+  @include modifier('good') {
+    background-color: green;
+  }
+  @include modifier('bad') {
+    background-color: red;
+  }
+  @include element('icon') {
+    margin-left: 1em;
+    @include modifier('good') {
+      color: green;
+    }
+    @include modifier('bad') {
+      color: red;
+    }
+  }
+}
+*/
+/* ===============================================================
+DOCS BASE STYLES
+================================================================*/
+.container.docs {
+  margin-top: 70px;
+}
+
+.docs-side-nav {
+  display: none;
+}
+.docs-side-nav .back-to-top {
+  font-size: 12px;
+  color: #8a8a8a;
+}
+.docs-side-nav .back-to-top:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+.docs-side-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.docs-side-nav a {
+  padding: 7px 15px;
+  display: block;
+}
+.docs-side-nav a:hover {
+  text-decoration: none;
+  background-color: #ededed;
+}
+
+@media only screen and (min-width: 1024px) {
+  .docs-main {
+    float: left;
+    width: 80%;
+    position: relative;
+    min-height: 1px;
+  }
+
+  .docs-side-nav {
+    display: block;
+    width: 20%;
+    float: left;
+    position: relative;
+    min-height: 100%;
+  }
+  .docs-side-nav .docs-side-nav--inner {
+    position: fixed;
+    top: 80px;
+    padding: 10px 0px;
+    margin-left: 20px;
+    width: 180px;
+    border: 1px solid #cecece;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+  }
+}
+.docs-header h1 {
+  margin: 1.25em 0 1em;
+}
+
+.docs-section-header {
+  border-top: 1px solid #ddd;
+  padding-top: 1em;
+  margin-top: 0;
+}
+
+.docs-section {
+  margin-bottom: 5em;
+}
+
+.docs-examples {
+  position: relative;
+  padding: 45px 15px 15px;
+  margin: 0 -20px 15px;
+  background-color: #fafafa;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.05);
+  border-color: #e5e5e5 #eee #eee;
+  border-style: solid;
+  border-width: 1px 0;
+}
+.docs-examples:after {
+  content: "Example";
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  font-size: 12px;
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  color: #bbb;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.docs-examples.has-btns {
+  padding-bottom: 45px;
+}
+.docs-examples + .code {
+  margin-top: -15px;
+  margin-bottom: 15px;
+  border-radius: 0;
+  border-width: 0 0 1px;
+}
+@media only screen and (min-width: 620px) {
+  .docs-examples {
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #ddd;
+    border-radius: 2px 2px 0 0;
+    box-shadow: none;
+  }
+  .docs-examples + .code {
+    margin-top: -16px;
+    margin-left: 0;
+    margin-right: 0;
+    border-width: 1px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+}
+
+.grid-examples .row {
+  margin-bottom: 15px;
+  background-color: #f5f5f5;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid #ddd;
+}
+.grid-examples .row [class*="col"] .grid-examples--item {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #d5d5d5;
+  text-align: center;
+}
+.grid-examples .row [class*="col"]:nth-child(even) .grid-examples--item {
+  background-color: #e5e5e5;
+}
+.grid-examples .row .row {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  border-left: 0;
+  border-right: 0;
+}
+.grid-examples .row .row [class*="col"] .grid-examples--item {
+  background-color: #a5a5a5;
+  color: white;
+}
+.grid-examples .row .row [class*="col"]:nth-child(even) .grid-examples--item {
+  background-color: #b5b5b5;
+}
+
+.color-swatch {
+  padding-bottom: 90%;
+  margin: 0 5px;
+  -moz-transition: box-shadow 0.35s ease;
+  -o-transition: box-shadow 0.35s ease;
+  -webkit-transition: box-shadow 0.35s ease;
+  transition: box-shadow 0.35s ease;
+}
+.color-swatch:hover {
+  -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.color-swatch-desc {
+  text-align: center;
+  padding: 5px 0 20px;
+}
+
+.code {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+@media only screen and (min-width: 620px) {
+  .code {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.docs-examples-btns {
+  *zoom: 1;
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+}
+.docs-examples-btns:before, .docs-examples-btns:after {
+  display: table;
+  content: "";
+}
+.docs-examples-btns:after {
+  clear: both;
+}
+
+.docs-table {
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+.docs-table th, .docs-table td {
+  padding: 7px;
+}
+.docs-table th {
+  border-left: 1px solid #ddd;
+  border-top-color: #ddd;
+  background-color: #ededed;
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+}
+.docs-table th:first-child {
+  border-left: none;
+}
+.docs-table td {
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-left-color: #ddd;
+  font-weight: normal;
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+}
+.docs-table tr {
+  border-bottom-color: #ddd;
+}
+
+/* ===============================================================
+CODE STYLES
+================================================================*/
+code,
+kbd,
+pre,
+samp {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f5f5f5;
+  white-space: nowrap;
+  border-radius: 2px;
+}
+
+kbd {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: white;
+  background-color: #333333;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857;
+  word-break: break-all;
+  word-wrap: normal;
+  overflow: auto;
+  white-space: pre;
+  color: #444444;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.pre-scrollable {
+  max-height: 340px;
+  overflow-y: scroll;
+}
+
+/*# sourceMappingURL=style-guide.css.map */

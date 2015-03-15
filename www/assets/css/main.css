@@ -1,0 +1,106 @@
+/* Variables */
+/* Mixins */
+/*
+A slightly more automated approach to BEM modifier classes:
+using '&' parent selector interpolation, modifiers extend their bases,
+so that HTML markup requires only the modifier class not the base *and* modifier
+*/
+/*
+// Example :
+
+.button {
+  padding: 0.5em;
+  border-radius: 0.25em;
+  @include modifier('good') {
+    background-color: green;
+  }
+  @include modifier('bad') {
+    background-color: red;
+  }
+  @include element('icon') {
+    margin-left: 1em;
+    @include modifier('good') {
+      color: green;
+    }
+    @include modifier('bad') {
+      color: red;
+    }
+  }
+}
+*/
+/* Fonts */
+/* @font-face {
+  font-family: 'temp';
+  src:url('../fonts/');
+  src:url('../fonts/') format('embedded-opentype'),
+    url('../fonts/') format('woff'),
+    url('../fonts/') format('truetype'),
+    url('../fonts/#temp') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+ */
+/* Global */
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.valign {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+.valign .valign-inner {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* The ghost, nudged to maintain perfect centering */
+.vert-align:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+  /* Adjusts for spacing */
+}
+
+/* The element to be centered, can
+   also be of any width and height */
+.vert-align-center {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.lt-ie9 .background-size-support {
+  behavior: url(/assets/js/libs/backgroundsize.min.htc);
+  -ms-behavior: url(/assets/js/libs/backgroundsize.min.htc);
+}
+
+.main {
+  margin-top: 70px;
+}
+
+.show-more {
+  overflow: hidden;
+  height: 0px;
+  *zoom: 1;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.show-more:before, .show-more:after {
+  display: table;
+  content: "";
+}
+.show-more:after {
+  clear: both;
+}
+
+/*# sourceMappingURL=main.css.map */
